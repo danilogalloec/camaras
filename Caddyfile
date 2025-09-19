@@ -1,0 +1,7 @@
+camaras.daganet.net {
+    reverse_proxy camaras-frontend:3000
+}
+
+api.camaras.daganet.net {
+    reverse_proxy camaras-backend:8000
+}
