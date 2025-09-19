@@ -7,6 +7,6 @@ RUN npm install --legacy-peer-deps
 
 COPY . .
 
-RUN npm run build
+RUN npm run build   # ✅ construye el frontend
 
-CMD ["npm", "start"]
+CMD ["npm", "start"]  # ✅ arranca en producción

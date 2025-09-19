@@ -1,24 +1,16 @@
 # backend/app/database.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-import os
+from .config import settings
 
-# URL de conexión (puedes definirla en backend/.env también)
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql+psycopg2://postgres:postgres@db:5432/camaras"
-)
+SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL
 
-# Motor de conexión
-engine = create_engine(DATABASE_URL)
-
-# Sesión para los queries
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Base para modelos
 Base = declarative_base()
 
-# 👉 Esta función es la que usan los routers
+# ✅ Esta función faltaba
 def get_db():
     db = SessionLocal()
     try:
