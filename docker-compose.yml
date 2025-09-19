@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    container_name: camaras-backend
+    env_file: backend/.env
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: camaras-frontend
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    container_name: camaras-db
+    restart: always
+    environment:
+      POSTGRES_USER: camarasusr
+      POSTGRES_PASSWORD: camaras123
+      POSTGRES_DB: camarasdb
+    volumes:
+      - camaras_db_data:/var/lib/postgresql/data
+
+volumes:
+  camaras_db_data:
