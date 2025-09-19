@@ -41,13 +41,13 @@ services:
 
   caddy:
     image: caddy:2
-    container_name: camaras-caddy
+    container_name: camaras-caddy   # ✅ ahora tiene nombre único
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - /home/deploy/app/Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     networks:
