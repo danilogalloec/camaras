@@ -34,180 +34,63 @@ Centralizar en una sola plataforma:
 - **Notificaciones:** Envío de correos (visitas y alertas de garantía).
 
 ---
-
 ## 📂 Estructura completa del proyecto
 
+```bash
 camaras-app/
-├─ .editorconfig
-├─ .env.example
-├─ .gitattributes
-├─ .gitignore
-├─ README.md
-├─ artisan
-├─ composer.json
-├─ composer.lock
-├─ package.json
-├─ package-lock.json
-├─ phpunit.xml
-├─ postcss.config.cjs
-├─ tailwind.config.js
-├─ vite.config.js
-├─ bootstrap/
-│  ├─ app.php
-│  └─ cache/.gitignore
-├─ config/
-│  ├─ app.php
-│  ├─ auth.php
-│  ├─ broadcasting.php
-│  ├─ cache.php
-│  ├─ cors.php
-│  ├─ database.php
-│  ├─ dompdf.php
-│  ├─ filesystems.php
-│  ├─ hashing.php
-│  ├─ logging.php
-│  ├─ mail.php
-│  ├─ queue.php
-│  ├─ sanctum.php
-│  ├─ services.php
-│  ├─ session.php
-│  └─ view.php
-├─ public/
-│  ├─ .htaccess
-│  ├─ favicon.ico
-│  ├─ index.php
-│  ├─ robots.txt
-│  └─ build/
-│     ├─ assets/
-│     │  ├─ app-AB96g9ka.js
-│     │  ├─ app-CksuuEqD.css
-│     │  └─ app-DTTGfVdl.css
-│     └─ manifest.json
+├─ app/
+│  ├─ Console/Commands/EnviarAlertasGarantia.php
+│  ├─ Http/
+│  │   ├─ Controllers/
+│  │   │   ├─ Admin/{ClienteController.php, CotizacionController.php}
+│  │   │   ├─ {AdminController.php, AuthAdminController.php, ClienteController.php,
+│  │   │       ClienteReporteController.php, CotizacionController.php,
+│  │   │       EquipoController.php, ReporteController.php, VisitaController.php}
+│  │   ├─ Middleware/{AdminAuth.php, ClienteAuth.php, …}
+│  │   └─ Kernel.php
+│  ├─ Mail/{AlertaGarantiaMail.php, NuevaVisitaMail.php}
+│  ├─ Models/{Admin.php, Cliente.php, Cotizacion.php, CotizacionItem.php, Equipo.php, Visita.php, User.php}
+│  └─ Providers/{AppServiceProvider.php, AuthServiceProvider.php, …}
+│
 ├─ resources/
 │  ├─ css/app.css
-│  ├─ js/
-│  │  ├─ app.js
-│  │  └─ bootstrap.js
+│  ├─ js/{app.js, bootstrap.js}
 │  └─ views/
-│     ├─ layouts/
-│     │  ├─ app.blade.php
-│     │  └─ admin.blade.php
-│     ├─ auth/
-│     │  ├─ admin_login.blade.php
-│     │  └─ login.blade.php
+│     ├─ layouts/{app.blade.php, admin.blade.php}
+│     ├─ auth/{login.blade.php, admin_login.blade.php}
 │     ├─ admin/
-│     │  ├─ dashboard.blade.php
-│     │  ├─ dashboard.blade.php-bueno          (backup)
-│     │  ├─ dashboard.blade.php.save           (backup)
-│     │  ├─ clientes.blade.php                 (vista legacy/atajo)
-│     │  ├─ editar_cliente.blade.php
-│     │  ├─ clientes/
-│     │  │  ├─ create.blade.php
-│     │  │  ├─ index.blade.php
-│     │  │  ├─ show.blade.php
-│     │  │  ├─ nuevo.blade.php
-│     │  │  └─ nuevo.blade.php-bk              (backup)
-│     │  ├─ equipos.blade.php                  (vista legacy/atajo)
-│     │  ├─ equipos/
-│     │  │  ├─ create.blade.php
-│     │  │  ├─ edit.blade.php
-│     │  │  └─ index.blade.php
-│     │  ├─ cotizaciones/
-│     │  │  ├─ create.blade.php
-│     │  │  ├─ edit.blade.php
-│     │  │  ├─ index.blade.php
-│     │  │  ├─ pdf.blade.php
-│     │  │  └─ show.blade.php
-│     │  ├─ reportes/
-│     │  │  └─ index.blade.php
-│     │  └─ visitas/
-│     │     └─ index.blade.php
-│     ├─ cliente/
-│     │  ├─ dashboard.blade.php
-│     │  ├─ agendar_visita.blade.php
-│     │  ├─ change-password.blade.php
-│     │  ├─ change_password.blade.php          (variación)
-│     │  └─ reportes/index.blade.php
-│     ├─ emails/
-│     │  ├─ alerta_garantia.blade.php
-│     │  └─ nueva_visita.blade.php
-│     ├─ pdf/
-│     │  └─ cotizacion.blade.php               (plantilla PDF)
+│     │   ├─ dashboard.blade.php
+│     │   ├─ clientes/{index.blade.php, create.blade.php, nuevo.blade.php, show.blade.php}
+│     │   ├─ equipos/{index.blade.php, create.blade.php, edit.blade.php}
+│     │   ├─ cotizaciones/{index.blade.php, create.blade.php, edit.blade.php, show.blade.php, pdf.blade.php}
+│     │   ├─ visitas/index.blade.php
+│     │   └─ reportes/index.blade.php
+│     ├─ cliente/{dashboard.blade.php, agendar_visita.blade.php, change-password.blade.php, reportes/index.blade.php}
+│     ├─ emails/{alerta_garantia.blade.php, nueva_visita.blade.php}
+│     ├─ pdf/cotizacion.blade.php
 │     └─ welcome.blade.php
-├─ routes/
-│  ├─ web.php
-│  ├─ api.php
-│  ├─ channels.php
-│  └─ console.php
+│
 ├─ database/
-│  ├─ .gitignore
-│  ├─ factories/
-│  │  └─ UserFactory.php
 │  ├─ migrations/
-│  │  ├─ 2014_10_12_000000_create_users_table.php
-│  │  ├─ 2014_10_12_100000_create_password_reset_tokens_table.php
-│  │  ├─ 2019_08_19_000000_create_failed_jobs_table.php
-│  │  ├─ 2019_12_14_000001_create_personal_access_tokens_table.php
-│  │  ├─ 2025_09_20_031304_create_clientes_table.php
-│  │  ├─ 2025_09_20_031909_create_visitas_table.php
-│  │  ├─ 2025_09_20_043211_create_equipos_table.php
-│  │  ├─ 2025_09_20_054338_create_admins_table.php
-│  │  ├─ 2025_09_20_173106_add_campos_extra_to_equipos_table.php
-│  │  ├─ 2025_09_21_000400_create_cotizaciones_table.php
-│  │  ├─ 2025_09_21_154308_create_cotizacion_items_table.php
-│  │  ├─ 2025_09_21_155211_change_validez_oferta_in_cotizaciones_table.php
-│  │  └─ 2025_09_21_161017_change_validez_oferta_type_in_cotizaciones_table.php
-│  └─ seeders/
-│     ├─ AdminSeeder.php
-│     └─ DatabaseSeeder.php
-└─ app/
-   ├─ Console/
-   │  ├─ Commands/EnviarAlertasGarantia.php
-   │  └─ Kernel.php
-   ├─ Exceptions/Handler.php
-   ├─ Http/
-   │  ├─ Controllers/
-   │  │  ├─ Admin/ClienteController.php
-   │  │  ├─ Admin/CotizacionController.php
-   │  │  ├─ AdminController.php
-   │  │  ├─ AuthAdminController.php
-   │  │  ├─ AuthController.php
-   │  │  ├─ ClienteController.php
-   │  │  ├─ ClienteReporteController.php
-   │  │  ├─ CotizacionController.php
-   │  │  ├─ EquipoController.php
-   │  │  ├─ ReporteController.php
-   │  │  └─ VisitaController.php
-   │  ├─ Middleware/
-   │  │  ├─ AdminAuth.php
-   │  │  ├─ Authenticate.php
-   │  │  ├─ ClienteAuth.php
-   │  │  ├─ EncryptCookies.php
-   │  │  ├─ PreventRequestsDuringMaintenance.php
-   │  │  ├─ RedirectIfAuthenticated.php
-   │  │  ├─ TrimStrings.php
-   │  │  ├─ TrustHosts.php
-   │  │  ├─ TrustProxies.php
-   │  │  ├─ ValidateSignature.php
-   │  │  └─ VerifyCsrfToken.php
-   │  └─ Kernel.php
-   ├─ Mail/
-   │  ├─ AlertaGarantiaMail.php
-   │  └─ NuevaVisitaMail.php
-   ├─ Models/
-   │  ├─ Admin.php
-   │  ├─ Cliente.php
-   │  ├─ Cotizacion.php
-   │  ├─ CotizacionItem.php
-   │  ├─ Equipo.php
-   │  ├─ User.php
-   │  └─ Visita.php
-   └─ Providers/
-      ├─ AppServiceProvider.php
-      ├─ AuthServiceProvider.php
-      ├─ BroadcastServiceProvider.php
-      ├─ EventServiceProvider.php
-      └─ RouteServiceProvider.php
+│  │   ├─ create_clientes_table.php
+│  │   ├─ create_equipos_table.php
+│  │   ├─ create_visitas_table.php
+│  │   ├─ create_admins_table.php
+│  │   ├─ create_cotizaciones_table.php
+│  │   ├─ create_cotizacion_items_table.php
+│  │   └─ … (otras migraciones)
+│  └─ seeders/{AdminSeeder.php, DatabaseSeeder.php}
+│
+├─ routes/{web.php, api.php, console.php, channels.php}
+├─ public/{index.php, favicon.ico, robots.txt, build/...}
+├─ config/{app.php, auth.php, database.php, mail.php, …}
+├─ bootstrap/app.php
+├─ artisan
+├─ composer.json
+├─ package.json
+├─ tailwind.config.js
+└─ vite.config.js
+
 ---
 
 ## 🖥️ Módulos y funcionalidades
