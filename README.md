@@ -290,9 +290,6 @@ php artisan view:cache
       * Contraseña: Los últimos 5 dígitos de la cédula (se pedirá cambiarla en el primer acceso).
 
 ## **Mantenimiento**
-
-@@
- ## **Mantenimiento**
  
    * **Limpiar Caché:** Si realizas cambios en el código o en los archivos `.env`, es recomendable limpiar la caché:
      ```bash
@@ -307,12 +304,12 @@ php artisan view:cache
 
 Además de este README, el repositorio incluye documentación detallada para entendery  reproducir el proceso completo de desarrollo y despliegue:
 
-+- [Historia de desarrollo](docs/HISTORIA_DESARROLLO.md)
-+- [Prompt maestro](docs/PROMPT_MAESTRO.md)
-+- [Base de datos](docs/base_de_datos.md)
-+- [Decisiones de arquitectura](docs/decisiones-arquitectura.md)
+- [Historia de desarrollo](docs/HISTORIA_DESARROLLO.md)
+- [Prompt maestro](docs/PROMPT_MAESTRO.md)
+- [Base de datos](docs/base_de_datos.md)
+- [Decisiones de arquitectura](docs/decisiones-arquitectura.md)
 
-- Prompts paso a paso:
+**Prompts paso a paso:**
 
 +  - [Desarrollo inicial](docs/prompts/desarrollo-inicial.md)
 +  - [Migración clientes](docs/prompts/migracion-clientes.md)
