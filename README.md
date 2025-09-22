@@ -311,9 +311,9 @@ Además de este README, el repositorio incluye documentación detallada para ent
 
 **Prompts paso a paso:**
 
-+  - [Desarrollo inicial](docs/prompts/desarrollo-inicial.md)
-+  - [Migración clientes](docs/prompts/migracion-clientes.md)
-+  - [Implementación cotizaciones](docs/prompts/implementacion-cotizaciones.md)
-+  - [Análisis de PDFs](docs/prompts/analisis-pdfs.md)
+- [Desarrollo inicial](docs/prompts/desarrollo-inicial.md)
+- [Migración clientes](docs/prompts/migracion-clientes.md)
+- [Implementación cotizaciones](docs/prompts/implementacion-cotizaciones.md)
+- [Análisis de PDFs](docs/prompts/analisis-pdfs.md)
 
 Estos documentos explican desde la planificación y diseño de la base de datos, la lógica de negocio y las vistas, hasta los prompts utilizados para generar y revisar el código, facilitando que cualquier persona pueda replicar o extender esta aplicación.
