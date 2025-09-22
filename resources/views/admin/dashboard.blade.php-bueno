@@ -1,0 +1,102 @@
+@extends('layouts.app')
+
+@section('content')
+<style>
+  /* ====== Grid de métricas ====== */
+  .dash-cards { display:grid; grid-template-columns: repeat(1,minmax(0,1fr)); gap:16px; }
+  @media (min-width:640px){ .dash-cards { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (min-width:1024px){ .dash-cards { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+
+  /* ====== Grid de botones ====== */
+  .dash-actions { display:grid; grid-template-columns: repeat(1,minmax(0,1fr)); gap:16px; }
+  @media (min-width:640px){ .dash-actions { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (min-width:1024px){ .dash-actions { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+
+  /* ====== Tarjeta métrica ====== */
+  .dash-card { background:#fff; border-radius:14px; padding:22px; box-shadow:0 1px 8px rgba(0,0,0,.06); text-align:center; }
+  .dash-metric { font-weight:800; font-size:28px; line-height:1; margin-bottom:6px; }
+  .dash-muted { color:#6b7280; font-size:13px; }
+
+  /* ====== Botones grandes ====== */
+  .dash-btn { display:flex; flex-direction:column; align-items:center; justify-content:center;
+              padding:26px 14px; border-radius:14px; color:#fff; font-weight:700; text-align:center;
+              box-shadow:0 2px 10px rgba(0,0,0,.08); text-decoration:none; transition:transform .15s ease, filter .15s ease; }
+  .dash-btn:hover { transform:translateY(-2px); filter:brightness(0.98); }
+  .dash-btn svg { width:26px; height:26px; margin-bottom:8px; }
+
+  /* Colores */
+  .btn-blue   { background:#2563eb; } .btn-blue:hover   { background:#1e40af; }
+  .btn-purple { background:#7c3aed; } .btn-purple:hover { background:#5b21b6; }
+  .btn-green  { background:#16a34a; } .btn-green:hover  { background:#166534; }
+  .btn-amber  { background:#f59e0b; } .btn-amber:hover  { background:#b45309; }
+
+  /* Contenedor página */
+  .dash-page  { max-width:1200px; margin:0 auto; padding:32px 18px 40px; }
+  .dash-title { font-size:30px; font-weight:800; color:#111827; margin:0 0 8px; }
+</style>
+
+<div class="dash-page">
+  {{-- Encabezado --}}
+  <h1 class="dash-title">
+    Bienvenido, <span class="text-blue-600">{{ $admin->name }}</span>
+  </h1>
+  <p class="text-gray-600 mb-6">Has iniciado sesión correctamente como administrador.</p>
+
+  {{-- Métricas: 4 columnas en desktop --}}
+  <div class="dash-cards mb-8">
+    <div class="dash-card">
+      <div class="dash-metric text-blue-600">{{ $totalClientes }}</div>
+      <div class="dash-muted">Clientes</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-metric text-indigo-600">{{ $totalVisitas }}</div>
+      <div class="dash-muted">Visitas Totales</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-metric text-yellow-600">{{ $visitasPendientes }}</div>
+      <div class="dash-muted">Visitas Pendientes</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-metric text-green-600">{{ $visitasAtendidas }}</div>
+      <div class="dash-muted">Visitas Atendidas</div>
+    </div>
+  </div>
+
+  {{-- Acciones: 4 columnas en desktop --}}
+  <div class="dash-actions">
+    {{-- Gestionar clientes --}}
+    <a href="{{ route('admin.clientes') }}" class="dash-btn btn-blue">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5.121 17.804A3 3 0 007.757 19h8.486a3 3 0 002.636-1.196M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+      Gestionar Clientes
+    </a>
+
+    {{-- Agregar cliente (por ahora redirige al listado; crea desde ahí) --}}
+    <a href="{{ route('admin.clientes') }}" class="dash-btn btn-purple">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Agregar Cliente
+    </a>
+
+    {{-- Gestionar visitas (usa el nombre correcto de tu route list: admin.visitas) --}}
+    <a href="{{ route('admin.visitas') }}" class="dash-btn btn-green">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4l3 3m6-9a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      Gestionar Visitas
+    </a>
+
+    {{-- Cotizaciones --}}
+    <a href="{{ route('admin.cotizaciones.index') }}" class="dash-btn btn-amber">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+      </svg>
+      Cotizaciones
+    </a>
+  </div>
+</div>
+@endsection

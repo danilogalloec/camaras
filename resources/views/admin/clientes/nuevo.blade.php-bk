@@ -1,0 +1,81 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Nuevo Cliente</h1>
+
+    <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100">
+        <form method="POST" action="{{ route('admin.clientes.store') }}" class="p-6 sm:p-8 space-y-8">
+            @csrf
+
+            {{-- Datos principales --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Cédula</label>
+                    <input type="text" name="cedula" value="{{ old('cedula') }}"
+                           class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                           placeholder="Ingrese la cédula" required>
+                    @error('cedula') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                    <input type="text" name="nombre" value="{{ old('nombre') }}"
+                           class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                           placeholder="Nombre completo" required>
+                    @error('nombre') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                    <input type="text" name="telefono" value="{{ old('telefono') }}"
+                           class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                           placeholder="0999999999" required>
+                    @error('telefono') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Correo</label>
+                    <input type="email" name="correo" value="{{ old('correo') }}"
+                           class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                           placeholder="correo@dominio.com" required>
+                    @error('correo') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                </div>
+            </div>
+
+            {{-- Dirección --}}
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+                <input type="text" name="direccion" value="{{ old('direccion') }}"
+                       class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                       placeholder="Calle, número, referencia" required>
+                @error('direccion') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+            </div>
+
+            {{-- Fecha de instalación --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de instalación</label>
+                    <input type="date" name="fecha_instalacion" value="{{ old('fecha_instalacion') }}"
+                           class="w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                           required>
+                    @error('fecha_instalacion') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                </div>
+                <div class="hidden md:block"></div>
+            </div>
+
+            {{-- Acciones --}}
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-end gap-3">
+                <a href="{{ route('admin.clientes') }}"
+                   class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200 transition">
+                    Cancelar
+                </a>
+                <button type="submit"
+                        class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition">
+                    Guardar Cliente
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
