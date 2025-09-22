@@ -291,11 +291,32 @@ php artisan view:cache
 
 ## **Mantenimiento**
 
-  * **Limpiar Caché:** Si realizas cambios en el código o en los archivos `.env`, es recomendable limpiar la caché:
-    ```bash
-    php artisan optimize:clear
-    ```
-  * **Ejecutar Migraciones:** Para aplicar nuevos cambios en la base de datos:
-    ```bash
-    php artisan migrate --force
-    ```
+@@
+ ## **Mantenimiento**
+ 
+   * **Limpiar Caché:** Si realizas cambios en el código o en los archivos `.env`, es recomendable limpiar la caché:
+     ```bash
+     php artisan optimize:clear
+     ```
+   * **Ejecutar Migraciones:** Para aplicar nuevos cambios en la base de datos:
+     ```bash
+     php artisan migrate --force
+     ```
+
+## 📚 Documentación técnica
+
+Además de este README, el repositorio incluye documentación detallada para entendery  reproducir el proceso completo de desarrollo y despliegue:
+
++- [Historia de desarrollo](docs/HISTORIA_DESARROLLO.md)
++- [Prompt maestro](docs/PROMPT_MAESTRO.md)
++- [Base de datos](docs/base_de_datos.md)
++- [Decisiones de arquitectura](docs/decisiones-arquitectura.md)
+
+- Prompts paso a paso:
+
++  - [Desarrollo inicial](docs/prompts/desarrollo-inicial.md)
++  - [Migración clientes](docs/prompts/migracion-clientes.md)
++  - [Implementación cotizaciones](docs/prompts/implementacion-cotizaciones.md)
++  - [Análisis de PDFs](docs/prompts/analisis-pdfs.md)
+
+Estos documentos explican desde la planificación y diseño de la base de datos, la lógica de negocio y las vistas, hasta los prompts utilizados para generar y revisar el código, facilitando que cualquier persona pueda replicar o extender esta aplicación.
