@@ -34,6 +34,7 @@ Centralizar en una sola plataforma:
 - **Notificaciones:** Envío de correos (visitas y alertas de garantía).
 
 ---
+
 ## 📂 Estructura completa del proyecto
 
 ```bash
@@ -90,54 +91,69 @@ camaras-app/
 ├─ package.json
 ├─ tailwind.config.js
 └─ vite.config.js
-
----
+```
 
 ## 🖥️ Módulos y funcionalidades
+###1. Autenticación y seguridad
 
-### 1. Autenticación y seguridad
-- Guardias `admin` y `cliente`.
-- Middlewares de protección (`AdminAuth`, `ClienteAuth`, `VerifyCsrfToken`, etc.).
-- Variables sensibles en `.env` (no se suben al repo).
+Guardias admin y cliente.
 
-### 2. Clientes
-- Alta, edición y ficha detallada.
-- Asociación de equipos.
-- Agendamiento de visitas.
-- Cambio de contraseña.
+Middlewares de protección (AdminAuth, ClienteAuth, VerifyCsrfToken, etc.).
 
-### 3. Equipos
-- CRUD completo (crear, editar, eliminar).
-- Relación con clientes.
-- Campos de garantía.
+Variables sensibles en .env (no se suben al repo).
 
-### 4. Cotizaciones
-- Formulario dinámico con cálculo en tiempo real (subtotal, IVA, total).
-- Exportación a PDF (`pdf/cotizacion.blade.php`).
-- Items con cantidad, precio y descuento.
+2. Clientes
 
-### 5. Visitas técnicas
-- Solicitud de visita desde el perfil de cliente.
-- Gestión de visitas en el panel admin.
-- Envío de correos automáticos (`NuevaVisitaMail`).
+Alta, edición y ficha detallada.
 
-### 6. Reportes
-- Resumen de clientes, equipos y garantías.
-- Envío de alertas por garantía (`EnviarAlertasGarantia.php`).
+Asociación de equipos.
 
----
+Agendamiento de visitas.
+
+Cambio de contraseña.
+
+3. Equipos
+
+CRUD completo (crear, editar, eliminar).
+
+Relación con clientes.
+
+Campos de garantía.
+
+4. Cotizaciones
+
+Formulario dinámico con cálculo en tiempo real (subtotal, IVA, total).
+
+Exportación a PDF (pdf/cotizacion.blade.php).
+
+Items con cantidad, precio y descuento.
+
+5. Visitas técnicas
+
+Solicitud de visita desde el perfil de cliente.
+
+Gestión de visitas en el panel admin.
+
+Envío de correos automáticos (NuevaVisitaMail).
+
+6. Reportes
+
+Resumen de clientes, equipos y garantías.
+
+Envío de alertas por garantía (EnviarAlertasGarantia.php).
 
 ## 🚀 Instalación y despliegue
+Requerimientos
 
-### Requerimientos
-- PHP 8.1+
-- MySQL/MariaDB
-- Composer
-- Node.js y NPM
+PHP 8.1+
 
-### Pasos
+MySQL/MariaDB
 
-```bash
+Composer
+
+Node.js y NPM
+
+Pasos
 git clone https://github.com/danilogalloec/camaras.git
 cd camaras
 cp .env.example .env
@@ -150,17 +166,19 @@ php artisan migrate --seed
 Configura .env para base de datos y correo.
 En producción, configura Nginx/Apache y apunta el document root a public/.
 
-🔒 Seguridad aplicada
+## 🔒 Seguridad aplicada
 
 Variables sensibles (.env) fuera del repositorio.
+
 Protección CSRF y validación de datos en todos los formularios.
+
 Separación de roles (admin, cliente) con middlewares.
+
 Notificaciones por correo para eventos críticos (nuevas visitas, vencimiento de garantía).
 
-🗂 Documentación y trazabilidad
+## 🗂 Documentación y trazabilidad
 
-Toda la historia de desarrollo, decisiones técnicas y prompts se guardan en docs/
- (crear si no existe) con archivos como:
+Toda la historia de desarrollo, decisiones técnicas y prompts se guardan en docs/ (crear si no existe) con archivos como:
 
 docs/
 ├─ decisiones-arquitectura.md
@@ -168,15 +186,6 @@ docs/
     ├─ desarrollo-inicial.md
     ├─ migracion-clientes.md
     └─ analisis-pdfs.md
-
-📜 Licencia
+## 📜 Licencia
 
 Por definir según el objetivo del proyecto (MIT sugerida si quieres que sea abierto).
----
-
-### Cómo usarlo
-
-1. En el VPS:
-   ```bash
-   cd /home/deploy/camaras-app
-   nano README.md
