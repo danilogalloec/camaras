@@ -95,98 +95,77 @@ camaras-app/
 ---
 
 ## 🖥️ Módulos y funcionalidades
-# 1. Autenticación y seguridad
+### 1. Autenticación y seguridad
 
-Guardias admin y cliente.
+- Guardias admin y cliente.
+- Middlewares de protección (AdminAuth, ClienteAuth, VerifyCsrfToken, etc.).
+- Variables sensibles en .env (no se suben al repo).
 
-Middlewares de protección (AdminAuth, ClienteAuth, VerifyCsrfToken, etc.).
+### 2. Clientes
 
-Variables sensibles en .env (no se suben al repo).
+- Alta, edición y ficha detallada.
+- Asociación de equipos.
+- Agendamiento de visitas.
+- Cambio de contraseña.
 
-2. Clientes
+### 3. Equipos
 
-Alta, edición y ficha detallada.
+- CRUD completo (crear, editar, eliminar).
+- Relación con clientes.
+- Campos de garantía.
 
-Asociación de equipos.
+### 4. Cotizaciones
 
-Agendamiento de visitas.
+- Formulario dinámico con cálculo en tiempo real (subtotal, IVA, total).
+- Exportación a PDF (pdf/cotizacion.blade.php).
+- Items con cantidad, precio y descuento.
 
-Cambio de contraseña.
+### 5. Visitas técnicas
 
-3. Equipos
+- Solicitud de visita desde el perfil de cliente.
+- Gestión de visitas en el panel admin.
+- Envío de correos automáticos (NuevaVisitaMail).
 
-CRUD completo (crear, editar, eliminar).
+### 6. Reportes
 
-Relación con clientes.
-
-Campos de garantía.
-
-4. Cotizaciones
-
-Formulario dinámico con cálculo en tiempo real (subtotal, IVA, total).
-
-Exportación a PDF (pdf/cotizacion.blade.php).
-
-Items con cantidad, precio y descuento.
-
-5. Visitas técnicas
-
-Solicitud de visita desde el perfil de cliente.
-
-Gestión de visitas en el panel admin.
-
-Envío de correos automáticos (NuevaVisitaMail).
-
-6. Reportes
-
-Resumen de clientes, equipos y garantías.
-
-Envío de alertas por garantía (EnviarAlertasGarantia.php).
+- Resumen de clientes, equipos y garantías.
+- Envío de alertas por garantía (EnviarAlertasGarantia.php).
 
 ## 🚀 Instalación y despliegue
-Requerimientos
+### Requerimientos
 
-PHP 8.1+
+- PHP 8.1+
+- MySQL/MariaDB
+- Composer
+- Node.js y NPM
+- TailwindCSS (vía `npm install`)
+- Vite (compilador de assets de Laravel)
+- Laravel Dompdf (`barryvdh/laravel-dompdf`) para exportar cotizaciones en PDF
+- @tailwindcss/forms (plugin de Tailwind para formularios elegantes)
 
-MySQL/MariaDB
-
-Composer
-
-Node.js y NPM
-
-Pasos
-git clone https://github.com/danilogalloec/camaras.git
-cd camaras
-cp .env.example .env
-composer install
-npm install
-npm run build
-php artisan key:generate
-php artisan migrate --seed
-
-Configura .env para base de datos y correo.
-En producción, configura Nginx/Apache y apunta el document root a public/.
+Configura `.env` para base de datos y correo.  
+En producción, configura Nginx/Apache y apunta el document root a `public/`.
 
 ## 🔒 Seguridad aplicada
 
-Variables sensibles (.env) fuera del repositorio.
-
-Protección CSRF y validación de datos en todos los formularios.
-
-Separación de roles (admin, cliente) con middlewares.
-
-Notificaciones por correo para eventos críticos (nuevas visitas, vencimiento de garantía).
+- Variables sensibles (`.env`) fuera del repositorio.
+- Protección CSRF y validación de datos en todos los formularios.
+- Separación de roles (`admin`, `cliente`) con middlewares.
+- Notificaciones por correo para eventos críticos (nuevas visitas, vencimiento de garantía).
 
 ## 🗂 Documentación y trazabilidad
 
-Toda la historia de desarrollo, decisiones técnicas y prompts se guardan en docs/ (crear si no existe) con archivos como:
+Toda la historia de desarrollo, decisiones técnicas y prompts se guardan en `docs/` (crear si no existe) con archivos como:
 
+```bash
 docs/
 ├─ decisiones-arquitectura.md
 └─ prompts/
     ├─ desarrollo-inicial.md
     ├─ migracion-clientes.md
     └─ analisis-pdfs.md
+```
+
 ## 📜 Licencia
 
 Por definir según el objetivo del proyecto (MIT sugerida si quieres que sea abierto).
