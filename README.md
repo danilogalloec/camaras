@@ -92,9 +92,10 @@ camaras-app/
 ├─ tailwind.config.js
 └─ vite.config.js
 ```
+---
 
 ## 🖥️ Módulos y funcionalidades
-###1. Autenticación y seguridad
+# 1. Autenticación y seguridad
 
 Guardias admin y cliente.
 
